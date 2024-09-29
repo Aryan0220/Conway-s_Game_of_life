@@ -23,7 +23,7 @@ int getNeighborCount(vector<vector<char>>& map, int row, int col) {
     for(int i = 0; i < 8; i++) {
         int nrow = (row + direction[i][0] + n) % n;
         int ncol = (col + direction[i][1] + n) % n;
-        if(map[nrow][ncol] == '0')
+        if(map[nrow][ncol] == '*')
             count++;
     }
     return count;
@@ -39,7 +39,7 @@ vector<vector<char>> generateSeed(int n, int startPos, int seedSize) {
 
     for (int i = 0; i < seedSize; ++i) {
         for (int j = 0; j < seedSize; ++j) {
-            seed[i][j] = (dis(gen) == 1) ? '0' : ' ';
+            seed[i][j] = (dis(gen) == 1) ? '*' : ' ';
         }
     }
 
@@ -113,8 +113,8 @@ int main() {
                         population++;
                 } else {
                     if(neighbors == 3)
-                        nextMap[i][j] = '0';
-                    if(nextMap[i][j] == '0')
+                        nextMap[i][j] = '*';
+                    if(nextMap[i][j] == '*')
                         population++;
                 }
             }
